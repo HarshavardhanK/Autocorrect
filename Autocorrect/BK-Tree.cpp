@@ -50,5 +50,46 @@ void BK_Tree::add_node_helper(BKNode * root, BKNode * current) {
     
     int distance = root->edit_distance(current);
     
+   // cout << distance << '\n';
     
+    if(tree[root->get_next_word_list()[distance]]->get_word() == "") {
+        
+        pointer++;
+        
+        tree[pointer] = current;
+        
+        root->get_next_word_list()[distance] = pointer;
+        
+    } else {
+        
+        add_node_helper(tree[root->get_next_word_list()[distance]], current);
+    }
+}
+
+void BK_Tree::add_node(BKNode * current) {
+    size++;
+    add_node_helper(root, current);
+}
+
+
+void BK_Tree::print_tree() {
+    
+    for(int i = 0; i < size; i++) {
+        cout << tree[i]->get_word() << '\n';
+    }
+    
+    cout << '\n';
+}
+
+void test_tree() {
+    
+    BK_Tree* tree = new BK_Tree("hello");
+    
+    vector<string> words {"hello", "help", "hell", "shell", "pelt", "felt"};
+    
+    for(auto x: words) {
+        tree->add_node(new BKNode(x));
+    }
+    
+    tree->print_tree();
 }

@@ -18,12 +18,18 @@ class BKNode {
     
     string word;
     
+    int LENGTH = 20;
+    
     vector<int> next_word_list;
     
 public:
     
     BKNode(string word) {
         this->word = word;
+        
+        for(int i = 0; i < LENGTH; i++) {
+            next_word_list.push_back(0);
+        }
     }
     
     BKNode() {}
@@ -47,12 +53,22 @@ class BK_Tree {
     
     int pointer;
     
+    static const int tree_size = 200;
+    
+    int size;
+    
 public:
     
     BK_Tree(string root_word) {
         
-        root = new BKNode(root_word);
+        size = 0;
         
+        root = new BKNode(root_word);
+        pointer = 0;
+        
+        for(int i = 0; i < 200; i++) {
+            tree.push_back(new BKNode(""));
+        }
     }
     
     void add_node(BKNode*);
@@ -63,5 +79,7 @@ public:
     
     
 };
+
+void test_tree();
 
 #endif /* BK_Tree_hpp */

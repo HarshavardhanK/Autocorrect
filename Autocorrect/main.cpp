@@ -14,9 +14,6 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    BKNode* node1 = new BKNode("hel");
-    BKNode* node2 = new BKNode("help");
-    
-    cout << node1->edit_distance(node2) << '\n';
+    test_tree();
     return 0;
 }
