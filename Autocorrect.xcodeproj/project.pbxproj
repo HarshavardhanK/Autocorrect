@@ -30,6 +30,7 @@
 		D6F0A22023CB0B4200EC5890 /* bk-tree-gfg.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "bk-tree-gfg.hpp"; sourceTree = "<group>"; };
 		D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "BK-Tree.cpp"; sourceTree = "<group>"; };
 		D6F0A22323CB644F00EC5890 /* BK-Tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "BK-Tree.hpp"; sourceTree = "<group>"; };
+		D6F0A22623CCE36A00EC5890 /* utilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utilities.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 				D6F0A22023CB0B4200EC5890 /* bk-tree-gfg.hpp */,
 				D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */,
 				D6F0A22323CB644F00EC5890 /* BK-Tree.hpp */,
+				D6F0A22623CCE36A00EC5890 /* utilities.hpp */,
 			);
 			path = Autocorrect;
 			sourceTree = "<group>";

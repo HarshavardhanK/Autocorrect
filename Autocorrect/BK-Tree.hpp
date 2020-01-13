@@ -12,6 +12,8 @@
 #include <vector>
 #include <iostream>
 
+#include "utilities.hpp"
+
 using namespace std;
 
 class BKNode {
@@ -32,7 +34,9 @@ public:
         }
     }
     
-    BKNode() {}
+    BKNode() {
+        word = "";
+    }
     
     const string get_word() { return word; }
     
@@ -41,21 +45,27 @@ public:
     vector<int> get_next_word_list() {
         return next_word_list;
     }
+    
+    void distance_to_next_word_list(int distance, int value);
 };
 
 class BK_Tree {
     
-    BKNode* root;
-    
-    vector<BKNode*> tree;
-    
-    void add_node_helper(BKNode*, BKNode*);
+    int size;
     
     int pointer;
     
     static const int tree_size = 200;
+    static const int TOLERANCE = 4;
     
-    int size;
+    BKNode* root;
+    
+    vector<BKNode*> tree;
+    vector<string> similar_words;
+    
+    //Helper functions
+    void add_node_helper(BKNode*, BKNode*);
+    vector<string> get_similar_words_helper(BKNode*, const string&);
     
 public:
     
@@ -71,15 +81,21 @@ public:
         }
     }
     
+    vector<string> get_similarity_list() {
+        return similar_words;
+    }
+    
     void add_node(BKNode*);
+    vector<string> get_similar_words(const string&);
     
     //Utility functions
-    
+    void print_similarity_list();
     void print_tree();
     
     
 };
 
 void test_tree();
+void test_similarity();
 
 #endif /* BK_Tree_hpp */

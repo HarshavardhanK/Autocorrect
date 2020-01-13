@@ -14,6 +14,7 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
     
-    test_tree();
+    //test_tree();
+    test_similarity();
     return 0;
 }
