@@ -22,7 +22,7 @@ class BKNode {
     
     string word;
     
-    int LENGTH = 20;
+    int LENGTH = 50;
     
     vector<int> next_word_list;
     
@@ -54,7 +54,7 @@ public:
 class BK_Tree {
     
     int size;
-    
+    int tree_capacity;
     int pointer;
     
     static const int tree_size = 200;
@@ -71,14 +71,15 @@ class BK_Tree {
     
 public:
     
-    BK_Tree(string root_word) {
+    BK_Tree(string root_word, int capacity = 50) {
         
         size = 0;
+        tree_capacity = capacity;
         
         root = new BKNode(root_word);
         pointer = 0;
         
-        for(int i = 0; i < 200; i++) {
+        for(int i = 1; i < tree_capacity; i++) {
             tree.push_back(new BKNode(""));
         }
     

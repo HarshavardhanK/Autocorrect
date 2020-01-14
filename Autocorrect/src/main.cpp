@@ -9,6 +9,7 @@
 #include <iostream>
 #include "../includes/BK-Tree.hpp"
 #include "../includes/Runner.hpp"
+#include "../includes/Feed.hpp"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ int main(int argc, const char * argv[]) {
     //test_similarity();
     //test_multithreading();
     
-    test_runner();
+    //test_runner();
+    test_feed('b');
     return 0;
 }
