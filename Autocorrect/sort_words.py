@@ -19,7 +19,7 @@ Split the list in to half. Take the middle word and make it root--
 
 '''
 
-PATH = './words-alpha.json'
+PATH = './data/words-alpha.json'
 TO_PATH = './data/'
 
 def load_data():
@@ -27,7 +27,7 @@ def load_data():
     with open(PATH) as file:
         return json.load(file)
 
-def three_halves_data(filename):
+def halve_data(filename):
 
     data = load_data()
     words = data.keys()
@@ -36,7 +36,7 @@ def three_halves_data(filename):
 
     length = len(words)
 
-    file_first_half = open(filename + "", "w")
+    file_first_half = open('./first_words.txt', "w")
     file_second_half = open('./second_words.txt', "w")
 
     top = words[0: length / 2]
@@ -95,7 +95,7 @@ def test():
     #print(vocabulary_size())
     #print(load_data()['aardvark'])
 
-    #halve_data()
+    halve_data()
     #distribute_data()
 
 
