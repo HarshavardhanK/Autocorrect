@@ -27,7 +27,7 @@ def load_data():
     with open(PATH) as file:
         return json.load(file)
 
-def halve_data():
+def three_halves_data(filename):
 
     data = load_data()
     words = data.keys()
@@ -36,7 +36,7 @@ def halve_data():
 
     length = len(words)
 
-    file_first_half = open('./first_words.txt', "w")
+    file_first_half = open(filename + "", "w")
     file_second_half = open('./second_words.txt', "w")
 
     top = words[0: length / 2]
@@ -87,6 +87,7 @@ def distribute_data():
         print("Created a file for {} alphabet".format(alphabet))
 
     print("DONE")
+
 
 
 def test():
