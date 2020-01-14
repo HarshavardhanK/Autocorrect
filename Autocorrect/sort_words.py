@@ -55,7 +55,6 @@ def distribute_data():
     data = load_data()
 
     words = data.keys()
-
     words_len = len(words)
 
     print("Total words in the vocabulary: {}".format(words_len))
@@ -69,7 +68,6 @@ def distribute_data():
         file = open(TO_PATH + alphabet + '.txt', "w")
 
         init_offset = word_len
-
         alpha_num = 0
 
         while(word_len < words_len and words[word_len][0] == alphabet):

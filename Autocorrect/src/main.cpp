@@ -7,7 +7,8 @@
 //
 
 #include <iostream>
-#include "BK-Tree.hpp"
+#include "../includes/BK-Tree.hpp"
+#include "../includes/Runner.hpp"
 
 using namespace std;
 
@@ -15,6 +16,9 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     
     //test_tree();
-    test_similarity();
+    //test_similarity();
+    //test_multithreading();
+    
+    test_runner();
     return 0;
 }

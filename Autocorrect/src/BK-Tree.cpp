@@ -6,7 +6,7 @@
 //  Copyright © 2020 Harshavardhan K. All rights reserved.
 //
 
-#include "BK-Tree.hpp"
+#include "../includes/BK-Tree.hpp"
 
 void BKNode::distance_to_next_word_list(int distance, int value) {
     
@@ -142,6 +142,10 @@ void BK_Tree::print_similarity_list() {
     cout << '\n';
 }
 
+//void BK_Tree::operator() (string& word) {
+//    this->similar_words = get_similar_words(word);
+//}
+
 void test_tree() {
     
     BK_Tree* tree = new BK_Tree("hello");
@@ -158,11 +162,17 @@ void test_tree() {
 void test_similarity() {
     
     BK_Tree* tree = new BK_Tree("hello");
+    BK_Tree* tree2 = new BK_Tree("india");
     
     vector<string> words {"hello", "help", "hell", "shell", "pelt", "felt"};
+    vector<string> words1 {"australia", "africa", "kenya", "egypt", "nairobi", "bangalore"};
     
     for(auto x: words) {
         tree->add_node(new BKNode(x));
+    }
+    
+    for(auto x: words1) {
+        tree2->add_node(new BKNode(x));
     }
     
     string word = "pellt";
@@ -175,3 +185,37 @@ void test_similarity() {
     
     
 }
+
+/*void test_multithreading() {
+    
+    BK_Tree* tree = new BK_Tree("hello");
+    BK_Tree* tree2 = new BK_Tree("india");
+    
+    vector<string> words {"hello", "help", "hell", "shell", "pelt", "felt"};
+    vector<string> words1 {"australia", "africa", "kenya", "egypt", "nairobi", "bangalore"};
+    
+    for(auto x: words) {
+        tree->add_node(new BKNode(x));
+    }
+    
+    for(auto x: words1) {
+        tree2->add_node(new BKNode(x));
+    }
+    
+    string word1 = "fell";
+    string word2 = "aussie";
+    
+    tree2->start_thread(word2);
+    tree->start_thread(word1);
+    
+    tree2->th.join();
+    tree->th.join();
+    
+    vector<string> sim1 = tree->get_similarity_list();
+    vector<string> sim2 = tree2->get_similarity_list();
+    
+    print_vector(sim1);
+    print_vector(sim2);
+    
+    
+}*/

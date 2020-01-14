@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D6F0A21A23CB083100EC5890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F0A21923CB083100EC5890 /* main.cpp */; };
-		D6F0A22123CB0B4200EC5890 /* bk-tree-gfg.hpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F0A22023CB0B4200EC5890 /* bk-tree-gfg.hpp */; };
 		D6F0A22423CB644F00EC5890 /* BK-Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */; };
 /* End PBXBuildFile section */
 
@@ -25,9 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D6474E1723CE389B0009FBE6 /* Runner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Runner.hpp; sourceTree = "<group>"; };
 		D6F0A21623CB083100EC5890 /* Autocorrect */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Autocorrect; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F0A21923CB083100EC5890 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D6F0A22023CB0B4200EC5890 /* bk-tree-gfg.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "bk-tree-gfg.hpp"; sourceTree = "<group>"; };
 		D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "BK-Tree.cpp"; sourceTree = "<group>"; };
 		D6F0A22323CB644F00EC5890 /* BK-Tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "BK-Tree.hpp"; sourceTree = "<group>"; };
 		D6F0A22623CCE36A00EC5890 /* utilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utilities.hpp; sourceTree = "<group>"; };
@@ -44,6 +43,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6474E1423CD88290009FBE6 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				D6F0A22323CB644F00EC5890 /* BK-Tree.hpp */,
+				D6F0A22623CCE36A00EC5890 /* utilities.hpp */,
+				D6474E1723CE389B0009FBE6 /* Runner.hpp */,
+			);
+			path = includes;
+			sourceTree = "<group>";
+		};
+		D6474E1523CD884B0009FBE6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */,
+				D6F0A21923CB083100EC5890 /* main.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		D6F0A20D23CB083100EC5890 = {
 			isa = PBXGroup;
 			children = (
@@ -63,11 +81,8 @@
 		D6F0A21823CB083100EC5890 /* Autocorrect */ = {
 			isa = PBXGroup;
 			children = (
-				D6F0A21923CB083100EC5890 /* main.cpp */,
-				D6F0A22023CB0B4200EC5890 /* bk-tree-gfg.hpp */,
-				D6F0A22223CB644F00EC5890 /* BK-Tree.cpp */,
-				D6F0A22323CB644F00EC5890 /* BK-Tree.hpp */,
-				D6F0A22623CCE36A00EC5890 /* utilities.hpp */,
+				D6474E1423CD88290009FBE6 /* includes */,
+				D6474E1523CD884B0009FBE6 /* src */,
 			);
 			path = Autocorrect;
 			sourceTree = "<group>";
@@ -131,7 +146,6 @@
 			files = (
 				D6F0A22423CB644F00EC5890 /* BK-Tree.cpp in Sources */,
 				D6F0A21A23CB083100EC5890 /* main.cpp in Sources */,
-				D6F0A22123CB0B4200EC5890 /* bk-tree-gfg.hpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +267,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z34Y633MA;
 				ENABLE_HARDENED_RUNTIME = YES;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -263,6 +278,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Z34Y633MA;
 				ENABLE_HARDENED_RUNTIME = YES;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

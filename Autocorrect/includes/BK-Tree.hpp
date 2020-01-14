@@ -12,6 +12,8 @@
 #include <vector>
 #include <iostream>
 
+#include <thread>
+
 #include "utilities.hpp"
 
 using namespace std;
@@ -79,6 +81,7 @@ public:
         for(int i = 0; i < 200; i++) {
             tree.push_back(new BKNode(""));
         }
+    
     }
     
     vector<string> get_similarity_list() {
@@ -92,10 +95,10 @@ public:
     void print_similarity_list();
     void print_tree();
     
-    
 };
 
 void test_tree();
 void test_similarity();
+void test_multithreading();
 
 #endif /* BK_Tree_hpp */
