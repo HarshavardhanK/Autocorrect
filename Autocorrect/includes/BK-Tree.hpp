@@ -58,7 +58,7 @@ class BK_Tree {
     int pointer;
     
     static const int tree_size = 200;
-    static const int TOLERANCE = 4;
+    static const int TOLERANCE = 2;
     
     BKNode* root;
     

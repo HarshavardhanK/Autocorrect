@@ -44,6 +44,29 @@ BK_Tree* Feed_Data::generate_tree_for(char charac) {
     return tree;
 }
 
+void Feed_Data::generate_vector_for_all() {
+    
+    std::vector<BK_Tree*> all_vect;
+    
+    for(int i = 'a'; i <= 'z'; i++) {
+        all_vect.push_back(generate_tree_for(i));
+    }
+    
+    std::cout << "Generated trees for all characters in the alphabet\n";
+    
+    this->vocabulary = all_vect;
+}
+
+void Feed_Data::generate_vector_for_charac(char charac) {
+    
+    std::vector<BK_Tree*> all_vect;
+    
+    all_vect.push_back(generate_tree_for(charac));
+    
+    this->vocabulary = all_vect;
+    
+}
+
 void test_feed(char charac) {
     
     Feed_Data feed;
@@ -64,4 +87,13 @@ void test_feed(char charac) {
     //tree2->print_tree();
     //tree->print_tree();
     
+}
+
+void test_all() {
+    
+    Feed_Data feed;
+    feed.generate_vector_for_all();
+    
+    std::vector<BK_Tree*> all_vect = feed.get_vocabulary();
+    all_vect[0]->print_tree();
 }

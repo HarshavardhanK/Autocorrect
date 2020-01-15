@@ -13,14 +13,16 @@
 
 using namespace std;
 
+void test_driver() {
+    
+    Driver driver;
+    string word = "babbaeg";
+    driver.auto_correct_for(word, 'b');
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
     
-    //test_tree();
-    //test_similarity();
-    //test_multithreading();
+    test_driver();
     
-    //test_runner();
-    test_feed('b');
     return 0;
 }
