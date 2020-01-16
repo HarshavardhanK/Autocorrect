@@ -16,13 +16,15 @@ using namespace std;
 void test_driver() {
     
     Driver driver;
-    string word = "babbaeg";
-    driver.auto_correct_for(word, 'b');
+    string word = "whta";
+    driver.auto_correct_for(word);
 }
 
 int main(int argc, const char * argv[]) {
     
     test_driver();
+    
+    //test_split_generate();
     
     return 0;
 }

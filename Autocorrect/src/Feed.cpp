@@ -8,12 +8,12 @@
 
 #include "Feed.hpp"
 
-std::vector<std::string> Feed_Data::generate_vector_for(char charac) {
-    
-    std::string character_path = PARENT_PATH + std::string(1, charac) + ".txt";
+//HELPER
+
+std::vector<std::string> load_file(std::string path_name) {
     
     std::ifstream file;
-    file.open(character_path);
+    file.open(path_name);
     
     std::vector<std::string> word_list;
     
@@ -29,6 +29,58 @@ std::vector<std::string> Feed_Data::generate_vector_for(char charac) {
     return word_list;
 }
 
+std::vector<std::string> Feed_Data::generate_vector_for(char charac) {
+    
+    std::string character_path = PARENT_PATH + std::string(1, charac) + ".txt";
+    
+    return load_file(character_path);
+    
+}
+
+//MARK:- SPLIT APPROACH
+
+std::vector<std::vector<std::string>> Feed_Data::split_generate_vector_for(char charac, int splits) {
+    
+    std::vector<std::vector<std::string>> words_list;
+    
+    for(int i = 0; i < splits; i++) {
+        std::string _PATH = HALVED_PARENT_PATH + std::string(1, charac) + to_string(i + 1) + ".txt";
+        std::cout << _PATH <<  '\n';
+        
+        words_list.push_back(load_file(_PATH));
+    }
+    
+    return words_list;
+}
+
+std::vector<BK_Tree*> Feed_Data::split_generate_tree_for_charc(char charac) {
+    
+    std::vector<std::vector<std::string>> words_list = split_generate_vector_for(charac, 2);
+    std::vector<BK_Tree*> tree_vect;
+    
+    for(auto& vect: words_list) {
+        
+        BK_Tree* tree = new BK_Tree(vect[0], (int) vect.size());
+        
+        for(int i = 0; i < vect.size(); i++) {
+            tree->add_node(new BKNode(vect[i]));
+        }
+        
+        tree_vect.push_back(tree);
+    }
+    
+    return tree_vect;
+}
+
+void Feed_Data::split_generate_vectors_for_charac(char charac) {
+    this->vocabulary = split_generate_tree_for_charc(charac);
+}
+
+
+
+//MARK:- Single approach
+
+
 BK_Tree* Feed_Data::generate_tree_for(char charac) {
     
     std::vector<std::string> words_list = generate_vector_for(charac);
@@ -43,6 +95,8 @@ BK_Tree* Feed_Data::generate_tree_for(char charac) {
     
     return tree;
 }
+
+
 
 void Feed_Data::generate_vector_for_all() {
     
@@ -86,6 +140,14 @@ void test_feed(char charac) {
     
     //tree2->print_tree();
     //tree->print_tree();
+    
+}
+
+void test_split_generate() {
+    
+    Feed_Data feed;
+    //feed.split_generate_vector_for('a', 2);
+    feed.split_generate_vectors_for_charac('m');
     
 }
 

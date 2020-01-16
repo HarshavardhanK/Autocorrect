@@ -86,11 +86,11 @@ vector<string> BK_Tree::get_similar_words_helper(BKNode* root_, const string & w
         return similar_words_;
     }
     
-    cout << "Examined word: " << root_->get_word() << '\n';
+    //cout << "Examined word: " << root_->get_word() << '\n';
     
     int distance = root_->edit_distance(new BKNode(word));
     
-    cout << "Distance is: " << distance << '\n';
+    //cout << "Distance is: " << distance << '\n';
     
     //print_vector(root_->get_next_word_list());
     

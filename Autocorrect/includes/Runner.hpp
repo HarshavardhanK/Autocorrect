@@ -40,23 +40,44 @@ class Driver {
 public:
     
     void auto_correct(std::string&);
-    void auto_correct_for(std::string&, char);
+    void auto_correct_for(std::string&);
     
 };
 
-void Driver::auto_correct_for(std::string &word, char charac) {
+void Driver::auto_correct_for(std::string &word) {
     
-    feed.generate_vector_for_charac(charac);
+//    feed.generate_vector_for_charac(charac);
+//
+//    std::vector<std::string> similar_words;
+//
+//    Runner* run = new Runner(feed.get_vocabulary()[0]);
+//
+//    thread thr(*run, word);
+//
+//    thr.join();
+//
+//    similar_words = run->tree->get_similarity_list();
+//
+//    print_vector(similar_words);
+    
+    feed.split_generate_vectors_for_charac(word[0]);
     
     std::vector<std::string> similar_words;
     
-    Runner* run = new Runner(feed.get_vocabulary()[0]);
+    Runner* run1 = new Runner(feed.get_vocabulary()[0]);
+    Runner* run2 = new Runner(feed.get_vocabulary()[1]);
     
-    thread thr(*run, word);
+    thread thread1(*run1, word);
+    thread thread2(*run2, word);
     
-    thr.join();
+    thread1.join();
+    thread2.join();
     
-    similar_words = run->tree->get_similarity_list();
+    similar_words = run1->tree->get_similarity_list();
+    
+    for(auto& word: run2->tree->get_similarity_list()) {
+        similar_words.push_back(word);
+    }
     
     print_vector(similar_words);
 }

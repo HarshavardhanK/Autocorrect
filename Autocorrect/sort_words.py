@@ -22,38 +22,53 @@ Split the list in to half. Take the middle word and make it root--
 PATH = './data/words-alpha.json'
 TO_PATH = './data/'
 
-def load_data():
+HALVED_PARENT_PATH = './data/halved/'
 
-    with open(PATH) as file:
+def load_data(path):
+
+    with open(path) as file:
         return json.load(file)
 
-def halve_data(filename):
+def load_text_file(path):
 
-    data = load_data()
-    words = data.keys()
+    words = []
 
-    words.sort()
+    with open(path) as file:
+        for word in file:
+            words.append(word)
+
+    return words
+
+#Halve the data to increase performance on a multithreaded system
+
+def halve_data(char):
+
+    path = TO_PATH + char + '.txt'
+
+    words = load_text_file(path)
 
     length = len(words)
 
-    file_first_half = open('./first_words.txt', "w")
-    file_second_half = open('./second_words.txt', "w")
+    first_filename = HALVED_PARENT_PATH + char + "1.txt"
+    second_filename = HALVED_PARENT_PATH + char + "2.txt"
+
+    file_first_half = open(first_filename, "w")
+    file_second_half = open(second_filename, "w")
 
     top = words[0: length / 2]
     bottom = words[length / 2: length]
 
     for word in top:
-        file_first_half.write(word+'\n')
+        file_first_half.write(word)
     
     for word in bottom:
-        file_second_half.write(word+'\n')
+        file_second_half.write(word)
 
-def distribute_data():
+def distribute_data(path):
 
     word_len = 0
 
-    data = load_data()
-
+    data = load_data(path)
     words = data.keys()
     words_len = len(words)
 
@@ -65,10 +80,10 @@ def distribute_data():
 
         alphabet = chr(97 + i)
 
-        file = open(TO_PATH + alphabet + '.txt', "w")
-
         init_offset = word_len
         alpha_num = 0
+
+        file = open(TO_PATH + alphabet + '.txt', "w")
 
         while(word_len < words_len and words[word_len][0] == alphabet):
             word_len += 1
@@ -86,21 +101,18 @@ def distribute_data():
 
     print("DONE")
 
+def exec():
+
+    for i in range(0, 26):
+        halve_data(chr(97 + i))
 
 
-def test():
 
-    #print(vocabulary_size())
-    #print(load_data()['aardvark'])
-
-    halve_data()
-    #distribute_data()
-
-
+#MAIN
 
 if __name__ == '__main__':
 
-    distribute_data()
+    exec()
     
 
 
