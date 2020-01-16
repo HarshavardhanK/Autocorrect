@@ -7,9 +7,7 @@
 //
 
 #include <iostream>
-#include "../includes/BK-Tree.hpp"
 #include "../includes/Runner.hpp"
-#include "../includes/Feed.hpp"
 
 using namespace std;
 
@@ -20,9 +18,27 @@ void test_driver() {
     driver.auto_correct_for(word);
 }
 
+void test_sentence() {
+    
+    Driver driver;
+    
+    std::string word;
+    
+    cout << "Enter sentence: ";
+    getline(cin, word);
+    
+    vector<string> string_vec = string_to_vec(word);
+    
+    for(auto& str: string_vec) {
+        driver.auto_correct_for(str);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     
-    test_driver();
+    //test_driver();
+    
+    test_sentence();
     
     //test_split_generate();
     

@@ -10,8 +10,12 @@
 #define file_handling_h
 
 #include <iostream>
+#include <sstream>
 #include <filesystem>
 #include <fstream>
+
+#include <map>
+#include <iterator>
 #include <vector>
 
 #include "BK-Tree.hpp"
@@ -49,5 +53,19 @@ std::vector<std::string> load_file(std::string);
 void test_split_generate();
 void test_feed(char);
 void test_all();
+
+//MARK:- FILE PARSERS
+
+class Parser {
+    
+public:
+    
+    vector<string> string_to_vec(string word);
+    pair<string, int> get_word_frequency(string line);
+    
+    map<string, int> get_frequency_list(string);
+        
+
+};
 
 #endif /* file_handling_h */

@@ -159,3 +159,63 @@ void test_all() {
     std::vector<BK_Tree*> all_vect = feed.get_vocabulary();
     all_vect[0]->print_tree();
 }
+
+
+
+//MARK:- PARSER
+
+vector<string> Parser::string_to_vec(string word) {
+    
+    std::istringstream word_stream(word);
+    std::vector<std::string> string_vec;
+    
+    do {
+        
+        std::string str;
+        word_stream >> str;
+        
+        string_vec.push_back(str);
+        
+    } while(word_stream);
+    
+    return string_vec;
+}
+
+pair<string, int> Parser::get_word_frequency(string line) {
+    
+    stringstream word_stream(line);
+    string data;
+    
+    pair<string, int> frequency;
+    
+    vector<string> items;
+    
+    while(getline(word_stream, data, ',')) {
+        items.push_back(data);
+    }
+    
+    frequency.first = items[0];
+    frequency.second = stoi(items[1]);
+    
+    return frequency;
+}
+
+map<string, int> Parser::get_frequency_list(string PATH) {
+    
+    map<string, int> frequency_list;
+    
+    ifstream file;
+    file.open(PATH, 'r');
+    
+    while(file) {
+        
+        string line;
+        
+        getline(file, line);
+        
+        frequency_list.insert(get_word_frequency(line));
+    }
+    
+    return frequency_list;
+}
+

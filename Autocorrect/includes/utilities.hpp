@@ -11,16 +11,20 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
+using namespace std;
 template <typename T>
-void print_vector(vector<T> vect) {
+
+void print_vector(std::vector<T> vect) {
     
     for(auto x: vect) {
-        cout << x << '\n';
+        std::cout << x << '\n';
     }
         
-        cout << '\n';
+        std::cout << '\n';
 }
+
+
+
 
 #endif /* utilities_hpp */
